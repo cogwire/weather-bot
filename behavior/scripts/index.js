@@ -2,7 +2,7 @@
 
 const getCurrentWeather = require('./lib/getCurrentWeather')
 
-const firstOfEntityRole = function(message, entity, role) {
+const firstOfEntityRole = function (message, entity, role) {
   role = role || 'generic';
 
   const slots = message.slots
@@ -19,7 +19,7 @@ exports.handle = function handle(client) {
     },
 
     extractInfo() {
-     const city = firstOfEntityRole(client.getMessagePart(), 'city')
+      const city = firstOfEntityRole(client.getMessagePart(), 'city')
       if (city) {
         client.updateConversationState({
           weatherCity: city,
@@ -50,14 +50,14 @@ exports.handle = function handle(client) {
 
         const weatherDescription = (
           resultBody.weather.length > 0 ?
-          resultBody.weather[0].description :
-          null
+            resultBody.weather[0].description :
+            null
         )
 
         const weatherData = {
           temperature: Math.round(resultBody.main.temp),
           condition: weatherDescription,
-          city: resultBody.name,
+          city: resultBody.name
         }
 
         console.log('sending real weather:', weatherData)
