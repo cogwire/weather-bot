@@ -57,10 +57,19 @@ exports.handle = function handle(client) {
         const weatherData = {
           temperature: Math.round(resultBody.main.temp),
           condition: weatherDescription,
-          city: resultBody.name
+          city: resultBody.name,
+          country: resultBody.sys.country,
+          location: {
+            longitude: resultBody.coords.lon,
+            latitude: resultBody.coords.lat
+          }
         }
 
-        console.log('sending real weather:', weatherData)
+        client.updateConversationState({
+          latestWeatherData: weatherData,
+        })
+
+        console.log('latestWeatherData:', weatherData)
         client.addResponse('provide_weather/current', weatherData)
         client.done()
 
@@ -69,11 +78,33 @@ exports.handle = function handle(client) {
     },
   })
 
+  const provideWeatherLocation = client.createStep({
+    satisfied() {
+      return false
+    },
+
+    prompt(callback) {
+      const environment = client.getCurrentApplicationEnvironment()
+      var latest = client.getConversationState().latestWeatherData
+      if (!latest) {
+        console.log('No cached weather data available')
+        callback()
+        return
+      }
+
+      console.log('sending location from cached latestWeatherData:', weatherData)
+      client.addResponse('provide_weather/location', weatherData)
+      client.done()
+
+      callback()
+    },
+  })
+
   client.runFlow({
     classifications: {},
     streams: {
       main: 'getWeather',
-      getWeather: [collectCity, provideWeather],
+      getWeather: [collectCity, provideWeather, provideWeatherLocation],
     }
   })
 }
