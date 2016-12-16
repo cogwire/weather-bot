@@ -61,10 +61,8 @@ exports.handle = function handle(client) {
           condition: weatherDescription,
           city: resultBody.name,
           country: resultBody.sys.country,
-          location: {
-            longitude: resultBody.coord.lon,
-            latitude: resultBody.coord.lat
-          }
+          longitude: resultBody.coord.lon,
+          latitude: resultBody.coord.lat
         }
 
         client.updateConversationState({
