@@ -21,5 +21,5 @@ Hi!
 seattle
 * ask_current_weather/conditions
 
-< It is [22](temperature) degrees and [sunny](condition) in [Seattle](condition) at the moment.
+< It is [22](temperature) °C and [sunny](condition) in [Seattle](city), [US](country_code) at the moment.
 * provide_weather/current

@@ -18,11 +18,11 @@ Hi!
 [vancouver](city)
 * ask_current_weather/conditions
 
-< The current temperature is [15](temperature) °C and [sunny](condition) in [Vancouver](city), [CA](country#code)
+< The current temperature is [15](temperature) °C and [sunny](condition) in [Vancouver](city), [CA](country_code)
 * provide_weather/current
 
 where is that
 * ask_current_weather/location
 
-< [Vancouver](city), [CA](country#code) is located at latitude [15.6](latitude), longitude [30.2](longitude)
+< [Vancouver](city), [CA](country_code) is located at latitude [15.6](number/latitude), longitude [30.2](number/longitude)
 * provide_weather/location

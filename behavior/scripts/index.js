@@ -60,7 +60,7 @@ exports.handle = function handle(client) {
           temperature: Math.round(resultBody.main.temp),
           condition: weatherDescription,
           city: resultBody.name,
-          country: resultBody.sys.country,
+          country_code: resultBody.sys.country,
           longitude: resultBody.coord.lon,
           latitude: resultBody.coord.lat
         }
@@ -84,7 +84,6 @@ exports.handle = function handle(client) {
     },
 
     prompt(callback) {
-      const environment = client.getCurrentApplicationEnvironment()
       var latest = client.getConversationState().latestWeatherData
       if (!latest) {
         console.log('No cached weather data available')

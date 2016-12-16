@@ -12,11 +12,11 @@ hi
 [oslo](city)
 * provide_weather/current
 
-< It is currently [5](temperature) degrees in [Oslo](city), [NO](country)
+< It is currently [5](temperature) degrees in [Oslo](city), [NO](country_code)
 * provide_weather/current
 
 where is that?
 * ask_current_weather/location
 
-< The weather station for [Oslo](city), [NO](country#code) is located at longitude [10.75](longitude), latitude [59.91](latitude).
+< The weather station for [Oslo](city), [NO](country_code) is located at longitude [10.75](number/longitude), latitude [59.91](number/latitude).
 * provide_weather/location
