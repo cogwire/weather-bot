@@ -103,7 +103,7 @@ exports.handle = function handle(client) {
     classifications: {},
     streams: {
       main: 'getWeather',
-      getWeather: [collectCity, provideWeather, provideWeatherLocation],
+      getWeather: [collectCity, provideWeather],
     }
   })
 }
