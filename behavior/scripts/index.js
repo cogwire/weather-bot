@@ -48,6 +48,8 @@ exports.handle = function handle(client) {
           return
         }
 
+        console.log('Weather API call successful: ' + JSON.stringify(resultBody))
+
         const weatherDescription = (
           resultBody.weather.length > 0 ?
             resultBody.weather[0].description :
@@ -60,8 +62,8 @@ exports.handle = function handle(client) {
           city: resultBody.name,
           country: resultBody.sys.country,
           location: {
-            longitude: resultBody.coords.lon,
-            latitude: resultBody.coords.lat
+            longitude: resultBody.coord.lon,
+            latitude: resultBody.coord.lat
           }
         }
 
